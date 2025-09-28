@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/index.css" />
+    <link
+      rel="stylesheet"
+      href="css/RemixIcon_Fonts_v4.6.0/fonts/remixicon.css"
+    />
+    <!-- Fontes -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@500;700&family=Poppins:wght@400;600;700&family=Roboto:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- CSS do Swiper -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"
+    />
+
+    <title>E-COMMERCE</title>
+  </head>
+
+  <body>
+    <div class="nav-bar">
+      <div class="header-inner-content">
+        <h1 class="logo">BLUE<span>STORE</span></h1>
+        <nav>
+          <ul>
+            <a href="#"><li>Sobre</li></a>
+            <a      href="https://wa.me/5522999348043?text=Olá, venho do site. Eu gostaria de esclarecer uma dúvida" target="_blank"><li>Contato</li></a>
+          </ul>
+        </nav>
+        <div class="nav-icon-container">
+          <input
+            class="input-busca"
+            onkeyup="filtrar()"
+            type="text"
+            placeholder="O que você procura?"
+          />
+          <div class="nav-icons">
+            <i class="ri-menu-line"></i>
+            <a class="btn-cart" href="carrinho.html" data-count="0">
+              <i class="ri-shopping-cart-line"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="align-flex">
+        <ul class="listaProdutos">
+          <!-- ALIMENTADO DINAMICAMENTE VIA API [.JS] -->
+        </ul>
+      </div>
+    </div>
+
+    <header class="header">
+      <!-- PARTE DO SITE [MOBILE] - HEADER -->
+      <div class="header-inner-content">
+        <div class="header-bottom-side align-flex">
+          <!-- Swiper -->
+          <!-- BANNER -->
+          <div class="banner">
+            <div class="slides">
+              <img
+                src="images/propaganda.png"
+                alt="Propaganda 1"
+                class="active"
+              />
+              <img src="images/propaganda2.png" alt="Propaganda 2" />
+              <img src="images/propaganda3.png" alt="Propaganda 3" />
+              <img src="images/propaganda4.png" alt="Propaganda 4" />
+            </div>
+            <div class="dots">
+              <span class="active"></span>
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+      <!-- PARTE DO SITE [HÍBRIDO] - PRINCIPAIS PRODUTOS -->
+      <section class="page-inner-content">
+        <h3 class="section-title">Principais Produtos</h3>
+        <div class="subtitle-underline"></div>
+        <div id="prods" class="cols cols-4">
+         <a href="/produtos.html?marca=Apple&categoria=Frontais">
+            <div class="product">
+              <img
+                src="/images/tela_display_lcd_iphone_15_vivid.webp"
+                alt="Categoria Apple"
+              />
+              <p class="product-name">Frontais Apple</p>
+              <p class="rate">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+              <p class="see-more">Ver mais &#187;</p>
+            </div>
+          </a>
+
+          <a href="/produtos.html?marca=Samsung&categoria=Frontais">
+            <div class="product">
+              <img
+                src="/images/tela_display_lcd_samsung_a14_5g_a146b_com_aro.webp"
+                alt="Categoria Samsung"
+              />
+              <p class="product-name">Frontais Samsung</p>
+              <p class="rate">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+              <p class="see-more">Ver mais &#187;</p>
+            </div>
+          </a>
+          <a href="/produtos.html?marca=Motorola&categoria=Frontais">
+            <div class="product">
+              <img
+                src="/images/tela_display_lcd_motorola_g15_com_aro.webp"
+                alt="Categoria Motorola"
+              />
+              <p class="product-name">Frontais Motorola</p>
+              <p class="rate">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+              <p class="see-more">Ver mais &#187;</p>
+            </div>
+          </a>
+          <a href="/produtos.html?marca=Xiaomi&categoria=Frontais">
+            <div class="product">
+              <img
+                src="/images/tela_display_lcd_xiaomi_note_10_11_11s.jpg"
+                alt="Categoria Xiaomi"
+              />
+              <p class="product-name">Frontais Xiaomi</p>
+              <p class="rate">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+              <p class="see-more">Ver mais &#187;</p>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <!-- PARTE DO SITE [MOBILE] - CATEGORIAS -->
+      <section id="produtos" class="page-inner-content">
+        <h3 class="section-title">Categorias de Peças</h3>
+        <div class="subtitle-underline"></div>
+        <div class="categorias">
+          <div class="items cols cols-4">
+            <a href="/produtos.html?categoria=Baterias" class="item"
+              >Baterias</a
+            >
+            <a href="produtos.html?categoria=Tampas" class="item"
+              >Tampas Tras.<br />e Carcaças</a
+            >
+            <a href="produtos.html?categoria=Docks" class="item"
+              >Docks e<br />Flex de Carga</a
+            >
+            <a href="produtos.html?categoria=Componentes" class="item"
+              >Componentes<br />e Lentes</a
+            >
+          </div>
+        </div>
+      </section>
+      <!-- GARANTIA [MOBILE] -->
+      <section class="mobile">
+        <div>
+          <div class="header-inner-content">
+            <div class="header-bottom-side garantia">
+              <div class="quadro">
+                <h2>GARANTIA:</h2>
+                <ul>
+                  <li>A instalação deve ser feita por um profissional.</li>
+                  <li>Garantia de 3 meses.</li>
+                  <li>
+                    Produtos enviados sem avarias (sem riscos, rachaduras,
+                    furos, cola, amassados etc.).
+                  </li>
+                  <li>Tela deve estar protegida com película.</li>
+                  <li>Sem arranhados.</li>
+                  <li>Sem manchas.</li>
+                  <li>O LCD não pode estar quebrado.</li>
+                  <li>O Flex não pode estar rasgado.</li>
+                  <li>
+                    Há Possibilidade de troca para peças coladas após remoção da
+                    cola.
+                  </li>
+                  <li>
+                    Importante manter o selo e outras identificações intactos.
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PARTE DO SITE [HÍBRIDO] - ULT. PRODUTOS -->
+      <section class="page-inner-content ultimos-produtos">
+        <h3 class="section-title">Novidades</h3>
+        <div class="subtitle-underline"></div>
+        <div class="cols cols-4" id="ultimosProdutos">
+          <!-- CATEGORIAS ALIMENTADAS PELO JSON -->
+        </div>
+      </section>
+
+      <!-- AVALIAÇÕES -->
+      <section class="page-inner-content testimonials-section">
+        <h3 class="section-title">Notas e Avaliações</h3>
+        <div class="subtitle-underline"></div>
+        <div class="testimonials">
+          <div class="testimonial">
+            <p>"</p>
+            <p>"Excelente qualidade de peças!"</p>
+            <p class="rate">
+              &#9733;&#9733;&#9733;&#9733;&#9733;<span>(5.0)</span>
+            </p>
+            <p>Raphael Oliveira</p>
+          </div>
+          <div class="testimonial">
+            <p>"</p>
+            <p>O melhor website ecommerce moderno e responsivo!</p>
+            <p class="rate">
+              &#9733;&#9733;&#9733;&#9733;&#9733;<span>(5.0)</span>
+            </p>
+            <p>Warren Buffet</p>
+          </div>
+          <div class="testimonial">
+            <p>"</p>
+            <p>"Entrega rápida e produto confiável."</p>
+            <p class="rate">
+              &#9733;&#9733;&#9733;&#9733;&#9733;<span>(5.0)</span>
+            </p>
+            <p>Rick Riordan</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="gray-background">
+      <div class="page-inner-content footer-content">
+        <div class="download-options">
+          <p>Em breve nosso aplicativo</p>
+          <p>Disponível para Android e iOS</p>
+          <div class="dwn-img">
+            <img src="/images/app-store.png" alt="Download na App Store" />
+            <img src="/images/play-store.png" alt="Download na Play Store" />
+          </div>
+        </div>
+
+        <div class="logo-footer" style="order: 1">
+          <h1 class="logo">BLUE<span>STORE</span></h1>
+          <p>
+            Revenda de peças e acessórios para celular. Produtos originais e
+            compatíveis para iPhone e Android.
+          </p>
+        </div>
+
+        <div class="links-footer" style="order: 3">
+          <h3>Links Úteis</h3>
+          <ul>
+            <li><a href="#">Cupons</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Políticas</a></li>
+            <li><a href="#">Afiliados</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <hr class="page-inner-content" />
+      <div class="page-inner-content copyright">
+        <p>Copyright 2025 - Raphael Oliveira - Todos os Direitos Reservados</p>
+      </div>
+    </footer>
+
+    <!-- WhatsApp -->
+    <a
+     href="https://wa.me/5522999348043?text=Olá, venho do site. Eu gostaria de esclarecer uma dúvida"
+      class="whatsapp-float"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Fale conosco pelo WhatsApp"
+    >
+      <i class="ri-whatsapp-line"></i>
+    </a>
+
+    <!-- JS -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"
+      defer
+    ></script>
+
+    <script src="/js/index.js" defer></script>
+  </body>
+</html>

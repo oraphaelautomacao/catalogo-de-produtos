@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/detalhes.css" />
+    <link
+      rel="stylesheet"
+      href="css/RemixIcon_Fonts_v4.6.0/fonts/remixicon.css"
+    />
+
+    <!-- Fontes -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@500;700&family=Poppins:wght@400;600;700&family=Roboto:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Swiper -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"
+    />
+
+    <title>Frontal iPhone 14 Pro Max | E-COMMERCE</title>
+    <meta
+      name="description"
+      content="Frontal iPhone 14 Pro Max com tecnologia InCell, alta durabilidade e fidelidade de cores. Produto novo, com garantia de 3 meses."
+    />
+  </head>
+
+  <body>
+    <header class="prod-detail">
+      <nav class="buttons-top" aria-label="Navegação do produto">
+        <a
+          href="javascript:history.back()"
+          aria-label="Voltar para página inicial"
+        >
+          <i class="ri-arrow-left-s-line"></i>
+        </a>
+        <div>
+          <input
+            class="input-busca2"
+            onkeyup="filtrar()"
+            type="text"
+            placeholder="O que você procura?"
+          />
+        </div>
+        <a
+          href="/carrinho.html"
+          class="btn-cart"
+          aria-label="Carrinho de compras"
+          data-count="0"
+        >
+          <i class="ri-shopping-cart-line"></i>
+        </a>
+      </nav>
+
+      <div style="display: flex; justify-content: center; align-items: center">
+        <ul class="listaProdutos2">
+          <!-- ALIMENTADO DINAMICAMENTE VIA API [.JS] -->
+        </ul>
+      </div>
+
+      <figure>
+        <img id="img-detalhe" src="" alt="" />
+      </figure>
+    </header>
+
+    <main class="page-inner-content">
+      <section class="prod-content">
+        <div class="block">
+          <!-- Título e promoção -->
+          <div class="line">
+            <b id="nome-detalhe"></b>
+
+            <button
+              class="btn-promo add-cart"
+              aria-label="Adicionar ao Carrinho"
+            >
+              Adicionar ao Carrinho
+            </button>
+          </div>
+
+          <!-- Avaliações -->
+          <div
+            class="display-flex align-items-center justify-content-center"
+            aria-label="Avaliações do produto"
+          >
+            <button class="btn-rates" aria-label="Nota média 4.8 de 5 estrelas">
+              <i class="ri-star-fill" style="color: gold"></i>&nbsp;<span
+                id="rating-detalhe"
+              ></span>
+            </button>
+            <button class="btn-rates" aria-label="97% de aprovação">
+              <i class="ri-thumb-up-fill" style="color: rgb(0, 255, 0)"></i
+              >&nbsp;<span id="like-detalhe"></span>
+            </button>
+            <span id="review-detalhe" class="color-gray"></span>
+          </div>
+
+          <!-- Descrição -->
+          <article class="descricao">
+            <p id="descricao-detalhe"></p>
+                <b> A [EMPRESA] agradece a preferência!! </b>
+          </article>
+
+          <!-- Características -->
+          <section aria-labelledby="caracteristicas">
+            <h2 id="caracteristicas" class="visually-hidden">
+              Características do produto
+            </h2>
+            <table id="tabdetalhes">
+              <tr>
+                <th>Características</th>
+                <th></th>
+              </tr>
+            </table>
+          </section>
+
+          <!-- Avisos importantes -->
+          <aside class="aviso" aria-label="Avisos importantes">
+            <p><strong>Atenção:</strong></p>
+            <ul>
+              <li>
+                A instalação desta peça exige ferramentas e conhecimentos
+                técnicos adequados.
+              </li>
+              <li>
+                Se não tiver experiência, procure um profissional especializado.
+              </li>
+              <li>
+                A garantia cobre apenas defeitos de fabricação. Danos causados
+                durante a instalação não são cobertos.
+              </li>
+            </ul>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    <div id="toast"></div>
+
+    <!-- Barra inferior fixa -->
+    <div id="toolbarCheckout" class="toolbar" role="contentinfo">
+      <div class="flex-40" style="text-align: center">
+        <span id="preco-detalhe" class="riscado color-gray">R$ 1.400,00</span>
+        <h3 id="precopromo-detalhe" class="pricing">R$ 1.200,00</h3>
+      </div>
+      <div class="flex-60">
+        <button class="add-wpp" aria-label="Adicionar ao Carrinho">
+          Solicitar Reserva&nbsp;<i class="ri-whatsapp-line"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Swiper e scripts -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"
+      defer
+    ></script>
+
+    <script src="/js/detalhes.js" defer></script>
+  </body>
+</html>

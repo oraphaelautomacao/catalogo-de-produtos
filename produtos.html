@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Produtos</title>
+  <link rel="stylesheet" href="css/produtos.css" />
+  <link rel="stylesheet" href="css/RemixIcon_Fonts_v4.6.0/fonts/remixicon.css" />
+   <!-- Fontes -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@500;700&family=Poppins:wght@400;600;700&family=Roboto:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+</head>
+<body>
+  <!-- HEADER -->
+  <nav class="buttons-top prod" aria-label="Navegação do produto">
+    <a href="javascript:history.back()" aria-label="Voltar">
+      <i class="ri-arrow-left-s-line"></i>
+    </a>
+    <strong class="marca-titulo" id="page-titulo"></strong>
+    <a href="#" class="link popover-toggle" aria-label="Mais opções">
+      <i class="ri-more-fill"></i>
+    </a>
+  </nav>
+  <header>
+    <div class="page-inner-content">
+      <p class="marca-subtitulo" id="page-subtitulo"></p>
+      <div class="subtitle-underline"></div>
+    </div>
+  </header>
+
+  <!-- LISTA DE PRODUTOS -->
+  <main>
+    <section class="page-inner-content">
+      <div id="lista-produtos" class="cols cols-4"></div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="page-inner-content">
+      <p>&copy; 2025 Raphael Oliveira - Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <script src="js/produtos.js"></script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/carrinho.css" />
+    <link
+      rel="stylesheet"
+      href="css/RemixIcon_Fonts_v4.6.0/fonts/remixicon.css"
+    />
+
+    <!-- Fontes -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@500;700&family=Poppins:wght@400;600;700&family=Roboto:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Swiper -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"
+    />
+
+    <title>Carrinho</title>
+    <meta name="description" content="" />
+  </head>
+
+  <body>
+    <nav class="buttons-top cart" aria-label="Navegação do produto">
+      <a href="/index.html" aria-label="Voltar para página inicial"
+        ><i class="ri-arrow-left-s-line"></i
+      ></a>
+      <strong>Carrinho</strong>
+      <!-- Botão (dentro do seu nav) -->
+      <a href="#" class="link popover-toggle" aria-label="Mais opções">
+        <i class="ri-more-fill"></i>
+      </a>
+    </nav>
+
+    <!-- Popover -->
+    <div class="popover popover-menu">
+      <div class="popover-inner">
+        <div class="list">
+          <ul>
+            <li>
+              <a id="esvaziar" href="#" class="list-button popover-close">
+                Esvaziar Carrinho
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal de confirmação -->
+    <div id="confirmModal" class="modal">
+      <div class="modal-content">
+        <h3>ESVAZIAR</h3>
+        <p>Tem certeza que quer esvaziar o carrinho?</p>
+        <div class="modal-actions">
+          <button id="cancelar">Cancelar</button>
+          <button id="confirmar">Confirmar</button>
+        </div>
+      </div>
+    </div>
+
+    <header>
+      <div class="page-inner-content">
+        <div id="listaCarrinho">
+          <!-- ITEM CARRINHO -->
+          <!-- ALIMENTADO VIA CARRINHO.JS -->
+        </div>
+      </div>
+    </header>
+
+    <div id="toolbarTotais" class="toolbar subtotal">
+      <!-- ALIMENTADO VIA CARRINHO.JS -->
+      </div>
+      <div class="subtotal-cart">
+        <!-- ALIMENTADO VIA CARRINHO.JS -->
+      </div>
+    </div>
+
+    <!-- Barra inferior fixa -->
+    <div id="toolbarCheckout" class="toolbar" role="contentinfo">
+      <div class="flex-100">
+        <button class="add-wpp" aria-label="Solicitar reserva pelo WhatsApp">
+          Solicitar Reserva&nbsp;<i class="ri-whatsapp-line"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Swiper e scripts -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"
+      defer
+    ></script>
+    <script src="/js/carrinho.js" defer></script>
+  </body>
+</html>
