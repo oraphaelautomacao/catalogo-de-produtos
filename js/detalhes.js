@@ -26,7 +26,7 @@ fetch("js/produtos.json")
 
     // Preencher detalhes
     document.getElementById("img-detalhe").src =
-      item.imagem || "/images/default.png";
+      item.imagem || "images/default.png";
     document.getElementById("nome-detalhe").textContent =
       item.nome || "Sem nome";
     document.getElementById("rating-detalhe").textContent = item.rating || "";
@@ -56,7 +56,7 @@ fetch("js/produtos.json")
       btn.addEventListener("click", () => {
         adicionarAoCarrinho(item, 1);
         atualizarContadorCarrinho();
-        animarParaCarrinho(item.imagem || "/images/default.png");
+        animarParaCarrinho(item.imagem || "images/default.png");
         mostrarToast(`${item.nome} adicionado ao carrinho!`);
       });
     });
@@ -145,7 +145,7 @@ function carregarBusca(produtos) {
   produtos.forEach((p) => {
     const li = document.createElement("li");
     li.innerHTML = `
-      <a href="detalhes.html?id=${p.id}">
+      <a href="https://oraphaelautomacao.github.io/catalogo-de-produtos/detalhes.html?id=${p.id}">
         <img width="50" src="${p.imagem}">
         <span class="item-name">${p.nome}</span>
       </a>

@@ -163,7 +163,7 @@ function renderizarCarrinho() {
   // renderiza itens
   cart.forEach((entry, index) => {
     const produto = entry.item || {};
-    const img = produto.imagem || "/images/default.png";
+    const img = produto.imagem || "images/default.png";
     const nome = produto.nome || "Produto";
     const principal_caracteristica = produto.principal_caracteristica || "";
     const quantidade = entry.quantidade || 1;

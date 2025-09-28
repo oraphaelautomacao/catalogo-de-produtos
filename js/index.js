@@ -25,7 +25,7 @@ function filtrar() {
 
     const li = document.createElement("li");
     li.innerHTML = `
-      <a href="detalhes.html?id=${item.id}">
+      <a href="https://oraphaelautomacao.github.io/catalogo-de-produtos/detalhes.html?id=${item.id}">
         <img width="50" src="${item.imagem}">
         <span class="item-name">${nomeDestacado}</span>
       </a>
@@ -63,7 +63,7 @@ fetch("js/produtos.json")
     // Renderizar novidades
     novidades.forEach(produto => {
       const a = document.createElement("a");
-      a.href = `detalhes.html?id=${produto.id}`;
+      a.href = `https://oraphaelautomacao.github.io/catalogo-de-produtos/detalhes.html?id=${produto.id}`;
       a.className = "item-link product";
       a.dataset.id = produto.id;
       a.innerHTML = `
