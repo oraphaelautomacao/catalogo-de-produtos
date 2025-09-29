@@ -280,7 +280,7 @@ nav ul li:hover {
 
 .banner .dots {
   position: absolute;
-  bottom: 1rem;
+  bottom: 1.3rem;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
@@ -453,7 +453,7 @@ min-height: 2.8rem;
 
 .garantia {
   box-shadow: 0px 0px 15px var(--azulEscuro);
-  background: #00026d;
+  background: #0b0c57;
   padding: 3rem 1rem;
   color: var(--branco);
   border-radius: 10px;
@@ -473,7 +473,7 @@ min-height: 2.8rem;
 }
 
 .quadro ul {
-  padding: 1.5rem 5rem;
+  padding: 1.5rem 2.2rem;
 }
 
 .quadro ul li {
