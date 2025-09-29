@@ -392,6 +392,7 @@ nav ul li:hover {
 .product {
   max-width: 300px;
   min-width: 150px;
+  min-height: 340px;
   color: #2c2c2c;
   margin-bottom: 1rem;
   display: flex;
@@ -420,8 +421,9 @@ nav ul li:hover {
   text-overflow: ellipsis;
 
   white-space: normal; /* permite quebrar linha */
-  line-height: 1.4em; /* melhora a leitura */
-  max-height: 2.8em; /* 2 linhas de altura */
+  line-height: 1.4rem; /* melhora a leitura */
+  max-height: 2.8rem; /* 2 linhas de altura */
+min-height: 2.8rem;
 
   max-width: 150px;
   margin-block: 0.4rem;
