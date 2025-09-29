@@ -1,124 +1,40 @@
+// ===== POPOVER =====
 const toggleBtn = document.querySelector(".popover-toggle");
 const popover = document.querySelector(".popover");
 const icon = toggleBtn?.querySelector("i");
 
-// Função de abrir/fechar
 function togglePopover(e) {
   e.preventDefault();
   const isOpen = popover.style.display === "block";
 
   if (isOpen) {
     popover.style.display = "none";
-    icon.classList.remove("ri-close-large-line");
-    icon.classList.add("ri-more-fill");
+    icon.classList.replace("ri-close-large-line", "ri-more-fill");
   } else {
     popover.style.display = "block";
-    icon.classList.remove("ri-more-fill");
-    icon.classList.add("ri-close-large-line");
+    icon.classList.replace("ri-more-fill", "ri-close-large-line");
   }
 }
 
-// Evento no botão
 if (toggleBtn) {
   toggleBtn.addEventListener("click", togglePopover);
 }
 
-// Fechar ao clicar fora
 document.addEventListener("click", (e) => {
-  if (
-    !popover.contains(e.target) &&
-    !toggleBtn.contains(e.target) &&
-    popover.style.display === "block"
-  ) {
+  if (!popover.contains(e.target) && !toggleBtn.contains(e.target) && popover.style.display === "block") {
     popover.style.display = "none";
-    icon.classList.remove("ri-close-large-line");
-    icon.classList.add("ri-more-fill");
+    icon.classList.replace("ri-close-large-line", "ri-more-fill");
   }
 });
 
-// Fechar ao clicar nos links internos
 document.querySelectorAll(".popover-close").forEach((link) => {
   link.addEventListener("click", () => {
     popover.style.display = "none";
-    icon.classList.remove("ri-close-large-line");
-    icon.classList.add("ri-more-fill");
+    icon.classList.replace("ri-close-large-line", "ri-more-fill");
   });
 });
 
-// ------
-
-const localCarrinho = localStorage.getItem("carrinho");
-
-if (localCarrinho) {
-  const cart = JSON.parse(localCarrinho);
-  if (cart.length > 0) {
-    //TEM ITENS NO CARRINHO, RENDERIZAR E SOMAR TOTAIS
-    renderizarCarrinho();
-  } else {
-    carrinhoVazio();
-  }
-} else {
-  carrinhoVazio();
-}
-
-function carrinhoVazio() {
-  console.log("Carrinho está vazio");
-
-  // ESVAZIAR LISTA DO CARRINHO
-  document.getElementById("listaCarrinho").replaceChildren();
-
-  // APAGAR OS ITENS DE BAIXO, BOTÃO E TOTAIS
-  document.getElementById("toolbarTotais").classList.add("display-none");
-  document.getElementById("toolbarCheckout").classList.add("display-none");
-
-  // MOSTRAR SACOLA VAZIA
-  document.getElementById("listaCarrinho").innerHTML = `
-  <div class="text-align-center">
-    <img src="images/empty.gif" alt="Carrinho vazio">
-    <br>
-    <span class="color-gray">Nada por enquanto...</span>
-  </div>
-`;
-}
-
-const btnEsvaziar = document.getElementById("esvaziar");
-const modal = document.getElementById("confirmModal");
-const btnCancelar = document.getElementById("cancelar");
-const btnConfirmar = document.getElementById("confirmar");
-
-// abrir modal
-if (btnEsvaziar && modal) {
-  btnEsvaziar.addEventListener("click", () => {
-    modal.style.display = "flex";
-  });
-}
-
-// cancelar -> fecha modal
-if (btnCancelar && modal) {
-  btnCancelar.addEventListener("click", () => {
-    modal.style.display = "none";
-  });
-}
-
-// confirmar -> apaga carrinho e recarrega página
-if (btnConfirmar && modal) {
-  btnConfirmar.addEventListener("click", () => {
-    localStorage.removeItem("carrinho");
-    modal.style.display = "none";
-    location.reload();
-  });
-}
-
-// fechar clicando fora da caixa
-if (modal) {
-  modal.addEventListener("click", (e) => {
-    if (e.target === modal) {
-      modal.style.display = "none";
-    }
-  });
-}
-
-// função que atualiza o contador (usa data-count nos botões .btn-cart)
+// ===== CARRINHO =====
 function atualizarContadorCarrinho() {
   const cart = JSON.parse(localStorage.getItem("carrinho")) || [];
   document.querySelectorAll(".btn-cart").forEach((btn) => {
@@ -126,38 +42,43 @@ function atualizarContadorCarrinho() {
   });
 }
 
+function carrinhoVazio() {
+  const listaCarrinho = document.getElementById("listaCarrinho");
+  const toolbarTotais = document.getElementById("toolbarTotais");
+  const toolbarCheckout = document.getElementById("toolbarCheckout");
+
+  if (!listaCarrinho) return;
+
+  listaCarrinho.innerHTML = `
+    <div class="text-align-center">
+      <img src="images/empty.gif" alt="Carrinho vazio">
+      <br>
+      <span class="color-gray">Nada por enquanto...</span>
+    </div>
+  `;
+
+  if (toolbarTotais) toolbarTotais.style.display = "none";
+  if (toolbarCheckout) toolbarCheckout.style.display = "none";
+
+  atualizarContadorCarrinho();
+}
+
 function renderizarCarrinho() {
   const listaCarrinho = document.getElementById("listaCarrinho");
   const toolbarTotais = document.getElementById("toolbarTotais");
   const toolbarCheckout = document.getElementById("toolbarCheckout");
 
-  if (!listaCarrinho) {
-    console.error("Elemento #listaCarrinho não encontrado no DOM");
-    return;
-  }
+  if (!listaCarrinho) return;
 
   const cart = JSON.parse(localStorage.getItem("carrinho")) || [];
   listaCarrinho.replaceChildren();
 
   if (cart.length === 0) {
-    // Carrinho vazio
-    listaCarrinho.innerHTML = `
-      <div class="text-align-center">
-        <img width="300" src="images/empty.gif" alt="Carrinho vazio" />
-        <br>
-        <span class="color-gray">Nada por enquanto...</span>
-      </div>
-    `;
-
-    // ESCONDER barras quando vazio
-    if (toolbarTotais) toolbarTotais.style.display = "none";
-    if (toolbarCheckout) toolbarCheckout.style.display = "none";
-
-    atualizarContadorCarrinho();
+    carrinhoVazio();
     return;
   }
 
-  // Carrinho com itens
+  // Renderizar itens
   cart.forEach((entry, index) => {
     const produto = entry.item || {};
     const img = produto.imagem || "images/default.png";
@@ -197,13 +118,13 @@ function renderizarCarrinho() {
     listaCarrinho.insertAdjacentHTML("beforeend", itemDiv);
   });
 
-  // === Atualiza totais ===
+  // Atualizar toolbar totais
   const subtotal = cart.reduce((soma, entry) => {
     return soma + (entry.total_item ?? entry.quantidade * (entry.item.preco_promocional || 0));
   }, 0);
 
   if (toolbarTotais) {
-    toolbarTotais.style.display = "flex"; // mostrar barra
+    toolbarTotais.style.display = "flex";
     toolbarTotais.innerHTML = `
       <div style="margin-top: 10px" class="subtotal-cart">
         <span>Subtotal: </span>
@@ -216,20 +137,16 @@ function renderizarCarrinho() {
     `;
   }
 
-  if (toolbarCheckout) {
-    toolbarCheckout.style.display = "flex"; // mostrar barra
-  }
+  if (toolbarCheckout) toolbarCheckout.style.display = "flex";
 
-  // ==== LISTENERS ====
+  // ==== EVENTOS MAIS / MENOS / DELETE ====
   listaCarrinho.querySelectorAll(".mais").forEach((btn) => {
     btn.addEventListener("click", (e) => {
       e.preventDefault();
       const idx = Number(btn.dataset.index);
       const cartLocal = JSON.parse(localStorage.getItem("carrinho")) || [];
-      cartLocal[idx].quantidade = (cartLocal[idx].quantidade || 0) + 1;
-      cartLocal[idx].total_item =
-        cartLocal[idx].quantidade *
-        (cartLocal[idx].item.preco_promocional || 0);
+      cartLocal[idx].quantidade += 1;
+      cartLocal[idx].total_item = cartLocal[idx].quantidade * (cartLocal[idx].item.preco_promocional || 0);
       localStorage.setItem("carrinho", JSON.stringify(cartLocal));
       renderizarCarrinho();
     });
@@ -243,9 +160,7 @@ function renderizarCarrinho() {
       if (!cartLocal[idx]) return;
       if (cartLocal[idx].quantidade > 1) {
         cartLocal[idx].quantidade -= 1;
-        cartLocal[idx].total_item =
-          cartLocal[idx].quantidade *
-          (cartLocal[idx].item.preco_promocional || 0);
+        cartLocal[idx].total_item = cartLocal[idx].quantidade * (cartLocal[idx].item.preco_promocional || 0);
       } else {
         cartLocal.splice(idx, 1);
       }
@@ -268,49 +183,49 @@ function renderizarCarrinho() {
   atualizarContadorCarrinho();
 }
 
-// chamar após DOM pronto
-document.addEventListener("DOMContentLoaded", () => {
+// ===== MODAL DE ESVAZIAR =====
+const btnEsvaziar = document.getElementById("esvaziar");
+const modal = document.getElementById("confirmModal");
+const btnCancelar = document.getElementById("cancelar");
+const btnConfirmar = document.getElementById("confirmar");
+
+if (btnEsvaziar && modal) btnEsvaziar.addEventListener("click", () => modal.style.display = "flex");
+if (btnCancelar && modal) btnCancelar.addEventListener("click", () => modal.style.display = "none");
+if (btnConfirmar && modal) btnConfirmar.addEventListener("click", () => {
+  localStorage.removeItem("carrinho");
+  modal.style.display = "none";
   renderizarCarrinho();
 });
+if (modal) modal.addEventListener("click", (e) => { if (e.target === modal) modal.style.display = "none"; });
 
-// Selecionar o botão de reserva
+// ===== WHATSAPP =====
 const btnWhatsApp = document.querySelector("#toolbarCheckout .add-wpp");
 
 if (btnWhatsApp) {
   btnWhatsApp.addEventListener("click", () => {
     const cart = JSON.parse(localStorage.getItem("carrinho")) || [];
-
     if (cart.length === 0) {
       alert("Carrinho vazio!");
       return;
     }
 
-    // Cabeçalho
     let mensagem = "*RESERVA DE PRODUTOS*\n\n";
-
-    // Listagem dos produtos
     cart.forEach((entry, idx) => {
       const produto = entry.item;
       const qtd = entry.quantidade;
       const precoUnit = (produto.preco_promocional || produto.preco || 0).toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
       const totalItem = (entry.total_item || qtd * (produto.preco_promocional || produto.preco || 0)).toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
-
-      mensagem += `*${idx + 1}. ${produto.nome}* (${produto.fabricante || "N/A"})\n`;
-      mensagem += `Quantidade: ${qtd}\n`;
-      mensagem += `Preço unitário: *${precoUnit}*\n`;
-      mensagem += `Total: *${totalItem}*\n`;
-      mensagem += "---------------------------\n";
+      mensagem += `*${idx + 1}. ${produto.nome}* (${produto.fabricante || "N/A"})\nQuantidade: ${qtd}\nPreço unitário: *${precoUnit}*\nTotal: *${totalItem}*\n---------------------------\n`;
     });
 
-    // Total geral
     const total = cart.reduce((soma, entry) => soma + (entry.total_item || 0), 0);
     mensagem += `*TOTAL DO CARRINHO: ${total.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}*\n\n`;
-
     mensagem += "Por favor, confirme disponibilidade e forma de pagamento.";
 
-    // Abrir WhatsApp
-    const numero = "5522999348043"; // substitua pelo seu número
-    const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensagem)}`;
-    window.open(url, "_blank");
+    const numero = "5522999348043"; // seu número
+    window.open(`https://wa.me/${numero}?text=${encodeURIComponent(mensagem)}`, "_blank");
   });
 }
+
+// ===== INICIALIZAÇÃO =====
+document.addEventListener("DOMContentLoaded", () => renderizarCarrinho());
