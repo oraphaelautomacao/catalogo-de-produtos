@@ -373,6 +373,13 @@ body {
   transform: translateY(-1px);
 }
 
+/* Barra fixa começa escondida */
+#toolbarTotais,
+#toolbarCheckout {
+  display: none; /* invisível inicialmente */
+}
+
+
 /* BREAKPOINTS (desktop) */
 /* ============================= */
 @media (min-width: 801px) {
