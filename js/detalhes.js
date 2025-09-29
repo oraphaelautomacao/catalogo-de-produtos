@@ -48,7 +48,7 @@ async function carregarProdutoDetalhes() {
   }
 
   // Procurar o produto selecionado
-  item = produtos.find((p) => Number(p.id) === id);
+  item = produtos.find((p) => String(p.id) === String(id));
   if (!item) {
     document.body.innerHTML = "<p>Produto não encontrado!</p>";
     console.warn("Produto não encontrado");
