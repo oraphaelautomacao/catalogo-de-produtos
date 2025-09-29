@@ -14,7 +14,7 @@ function capitalizar(str) {
 }
 
 // Carregar produtos JSON
-fetch("js/produtos.json")
+fetch("https://script.google.com/macros/s/AKfycbycFZtfiz0O49MlOzekcjduaFSeTRnrTd61k2edZJS--TEDKxkKDKOgkHbW7N0qbl6U/exec")
   .then(res => res.json())
   .then(produtos => {
     localStorage.setItem("produtos-chave", JSON.stringify(produtos));

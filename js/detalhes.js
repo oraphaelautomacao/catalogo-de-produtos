@@ -13,7 +13,7 @@ function capitalizar(str) {
 }
 
 // Carregar produtos do JSON
-fetch("js/produtos.json")
+fetch("https://script.google.com/macros/s/AKfycbycFZtfiz0O49MlOzekcjduaFSeTRnrTd61k2edZJS--TEDKxkKDKOgkHbW7N0qbl6U/exec")
   .then((res) => res.json())
   .then((produtos) => {
     item = produtos.find((p) => p.id == id);
