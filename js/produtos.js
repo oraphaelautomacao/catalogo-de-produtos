@@ -53,7 +53,7 @@ fetch("js/produtos.json")
     filtrados.forEach(produto => {
       const produtoHTML = `
         <a data-id="${produto.id}" class="item-link product">
-          <img src="${produto.imagem || '/images/default.png'}" alt="${produto.nome}">
+          <img src="${produto.imagem || 'images/default.png'}" alt="${produto.nome}">
           <p class="product-name">${produto.nome} ${produto.fabricante ? `(${produto.fabricante})` : ""}</p>
           <p class="rate">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
           <p class="product-price">
