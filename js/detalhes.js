@@ -33,7 +33,9 @@ async function carregarProdutoDetalhes() {
   // Se não tiver cache válido, busca na API
   if (!produtos) {
     try {
-      const res = await fetch("https://script.google.com/macros/s/AKfycbycFZtfiz0O49MlOzekcjduaFSeTRnrTd61k2edZJS--TEDKxkKDKOgkHbW7N0qbl6U/exec");
+      const res = await fetch(
+        "https://script.google.com/macros/s/AKfycbycFZtfiz0O49MlOzekcjduaFSeTRnrTd61k2edZJS--TEDKxkKDKOgkHbW7N0qbl6U/exec"
+      );
       produtos = await res.json();
       localStorage.setItem(
         CACHE_KEY_PRODUTOS,
@@ -42,7 +44,8 @@ async function carregarProdutoDetalhes() {
       console.log("🌐 Produtos carregados da API");
     } catch (err) {
       console.error("Erro ao carregar produtos:", err);
-      document.body.innerHTML = "<p>Erro ao carregar produtos. Tente novamente mais tarde.</p>";
+      document.body.innerHTML =
+        "<p>Erro ao carregar produtos. Tente novamente mais tarde.</p>";
       return;
     }
   }
@@ -76,14 +79,26 @@ function preencherDetalhes(item, produtos) {
   setTexto("like-detalhe", item.likes || 0);
   setTexto("review-detalhe", (item.reviews || 0) + " avaliações");
   setTexto("descricao-detalhe", item.descricao || "");
-  setTexto("preco-detalhe", (item.preco || 0).toLocaleString("pt-BR",{ style:"currency", currency:"BRL"}));
-  setTexto("precopromo-detalhe", (item.preco_promocional || 0).toLocaleString("pt-BR",{ style:"currency", currency:"BRL"}));
-const setHTML = (id, html) => {
-  const el = document.getElementById(id);
-  if (el) el.innerHTML = html;
-};
+  setTexto(
+    "preco-detalhe",
+    (item.preco || 0).toLocaleString("pt-BR", {
+      style: "currency",
+      currency: "BRL",
+    })
+  );
+  setTexto(
+    "precopromo-detalhe",
+    (item.preco_promocional || 0).toLocaleString("pt-BR", {
+      style: "currency",
+      currency: "BRL",
+    })
+  );
+  const setHTML = (id, html) => {
+    const el = document.getElementById(id);
+    if (el) el.innerHTML = html;
+  };
 
-setHTML("add-wpp", `Solicitar Reserva&nbsp;<i class="ri-whatsapp-line"></i>`);
+  setHTML("add-wpp", `Solicitar Reserva&nbsp;<i class="ri-whatsapp-line"></i>`);
 
   // Preencher tabela de detalhes
   const tabelaDetalhes = document.getElementById("tabdetalhes");
@@ -137,9 +152,9 @@ function mostrarToast(msg) {
 
 function atualizarContadorCarrinho() {
   const cart = JSON.parse(localStorage.getItem("carrinho")) || [];
-  document.querySelectorAll(".btn-cart").forEach((btn) =>
-    btn.setAttribute("data-count", cart.length)
-  );
+  document
+    .querySelectorAll(".btn-cart")
+    .forEach((btn) => btn.setAttribute("data-count", cart.length));
 }
 setTimeout(atualizarContadorCarrinho, 300);
 
@@ -165,7 +180,12 @@ function animarParaCarrinho(imgSrc) {
   img.animate(
     [
       { transform: `translate(0,0) scale(1)`, opacity: 1 },
-      { transform: `translate(${endX - startX}px, ${endY - startY}px) scale(0.3)`, opacity: 0.5 },
+      {
+        transform: `translate(${endX - startX}px, ${
+          endY - startY
+        }px) scale(0.3)`,
+        opacity: 0.5,
+      },
     ],
     { duration: 800, easing: "ease-in-out" }
   ).onfinish = () => img.remove();
@@ -227,8 +247,11 @@ if (btnWhatsApp) {
       return;
     }
 
-    const precoUnit = (item.preco_promocional || item.preco || 0)
-      .toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
+    const precoUnit = (
+      item.preco_promocional ||
+      item.preco ||
+      0
+    ).toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
 
     let mensagem = `*RESERVA DE PRODUTO*\n\n`;
     mensagem += `*${item.nome}* (${item.fabricante || "N/A"})\n`;
