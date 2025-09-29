@@ -78,6 +78,12 @@ function preencherDetalhes(item, produtos) {
   setTexto("descricao-detalhe", item.descricao || "");
   setTexto("preco-detalhe", (item.preco || 0).toLocaleString("pt-BR",{ style:"currency", currency:"BRL"}));
   setTexto("precopromo-detalhe", (item.preco_promocional || 0).toLocaleString("pt-BR",{ style:"currency", currency:"BRL"}));
+const setHTML = (id, html) => {
+  const el = document.getElementById(id);
+  if (el) el.innerHTML = html;
+};
+
+setHTML("add-wpp", `Solicitar Reserva&nbsp;<i class="ri-whatsapp-line"></i>`);
 
   // Preencher tabela de detalhes
   const tabelaDetalhes = document.getElementById("tabdetalhes");
