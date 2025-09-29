@@ -39,7 +39,7 @@ function filtrar() {
 // --------------------------
 // CARREGAR PRODUTOS (produtos.json)
 // --------------------------
-fetch("js/produtos.json")
+fetch("https://script.google.com/macros/s/AKfycbycFZtfiz0O49MlOzekcjduaFSeTRnrTd61k2edZJS--TEDKxkKDKOgkHbW7N0qbl6U/exec")
   .then(res => res.json())
   .then(json => { produtos = json; })
   .catch(err => console.error("Erro ao carregar produtos.json:", err));
@@ -54,7 +54,7 @@ function carregarUltimosProdutos() {
   container.replaceChildren();
 
  // Carregar produtos JSON
-fetch("js/produtos.json")
+fetch("https://script.google.com/macros/s/AKfycbycFZtfiz0O49MlOzekcjduaFSeTRnrTd61k2edZJS--TEDKxkKDKOgkHbW7N0qbl6U/exec")
   .then(res => res.json())
   .then(data => {
     // Filtrar novidades
