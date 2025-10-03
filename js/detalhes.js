@@ -93,6 +93,7 @@ function preencherDetalhes(item, produtos) {
       currency: "BRL",
     })
   );
+  setTexto("qtdDisponivel", item.quantidade || 0)
   const setHTML = (id, html) => {
     const el = document.getElementById(id);
     if (el) el.innerHTML = html;
